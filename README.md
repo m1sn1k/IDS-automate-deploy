@@ -1,4 +1,6 @@
 # IDS-automate-deploy
+Snort + Barnyard2 + Pulledpork + Snorby
+
 
 Script snort.sh
 Deploy snort system without snort.conf (rules file)
