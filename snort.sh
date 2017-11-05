@@ -10,7 +10,7 @@ NOCOLOR='\033[0m'
 BOLD='\033[1m'
 
 echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Installing dependencies.\n\n"
-	sudo apt-get install -y --force-yes build-essential libpcap-dev libpcre3-dev libdumbnet-dev bison flex zlib1g-dev git locate vim
+	 apt-get install -y --force-yes build-essential libpcap-dev libpcre3-dev libdumbnet-dev bison flex zlib1g-dev git locate vim
 	
 	#Downloading DAQ and SNORT
 	cd $HOME && mkdir snort_src && cd snort_src
@@ -25,7 +25,7 @@ echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Installing dependencies.\n\n"
 	tar xvfz daq-2.0.6.tar.gz
 	mv $HOME/snort_src/daq-*/ $HOME/snort_src/daq                     
 	cd $HOME/snort_src/daq
-	./configure && make && sudo make install 
+	./configure && make &&  make install 
 	echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}$DAQ${NOCOLOR} installed successfully.\n\n"
 	
 	#Installing SNORT
@@ -35,37 +35,37 @@ echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Installing dependencies.\n\n"
 	rm -r *.tar.gz > /dev/null 2>&1
 	mv snort-*/ snort           
 	cd snort
-	./configure --enable-sourcefire && make && sudo make install
+	./configure --enable-sourcefire && make &&  make install
 	echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}$SNORT${NOCOLOR} installed successfully.\n\n"
 	cd ..
 	
-	sudo ldconfig
-	sudo ln -s /usr/local/bin/snort /usr/sbin/snort
+	 ldconfig
+	 ln -s /usr/local/bin/snort /usr/sbin/snort
 
 	#Adding SNORT user and group for running SNORT
 	echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Adding user and group ${BOLD}SNORT${NOCOLOR}.\n\n"
-	sudo groupadd snort
-	sudo useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
-	sudo mkdir /etc/snort > /dev/null 2>&1
-	sudo mkdir /etc/snort/rules > /dev/null 2>&1
-	sudo mkdir /etc/snort/preproc_rules > /dev/null 2>&1
-	sudo touch /etc/snort/rules/white_list.rules /etc/snort/rules/black_list.rules /etc/snort/rules/local.rules > /dev/null 2>&1
-	sudo mkdir /var/log/snort > /dev/null 2>&1
-	sudo mkdir /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
-	sudo chmod -R 5775 /etc/snort > /dev/null 2>&1
-	sudo chmod -R 5775 /var/log/snort > /dev/null 2>&1
-	sudo chmod -R 5775 /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
-	sudo chown -R snort:snort /etc/snort > /dev/null 2>&1
-	sudo chown -R snort:snort /var/log/snort > /dev/null 2>&1
-	sudo chown -R snort:snort /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
+	 groupadd snort
+	 useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
+	 mkdir /etc/snort > /dev/null 2>&1
+	 mkdir /etc/snort/rules > /dev/null 2>&1
+	 mkdir /etc/snort/preproc_rules > /dev/null 2>&1
+	 touch /etc/snort/rules/white_list.rules /etc/snort/rules/black_list.rules /etc/snort/rules/local.rules > /dev/null 2>&1
+	 mkdir /var/log/snort > /dev/null 2>&1
+	 mkdir /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
+	 chmod -R 5775 /etc/snort > /dev/null 2>&1
+	 chmod -R 5775 /var/log/snort > /dev/null 2>&1
+	 chmod -R 5775 /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
+	 chown -R snort:snort /etc/snort > /dev/null 2>&1
+	 chown -R snort:snort /var/log/snort > /dev/null 2>&1
+	 chown -R snort:snort /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
 	
-	sudo cp ~/snort_src/snort/etc/*.conf* /etc/snort > /dev/null 2>&1
-	sudo cp ~/snort_src/snort/etc/*.map /etc/snort > /dev/null 2>&1
+	 cp ~/snort_src/snort/etc/*.conf* /etc/snort > /dev/null 2>&1
+	sdo cp ~/snort_src/snort/etc/*.map /etc/snort > /dev/null 2>&1
 	
-	sudo sed -i 's/include \$RULE\_PATH/#include \$RULE\_PATH/' /etc/snort/snort.conf
+	 sed -i 's/include \$RULE\_PATH/#include \$RULE\_PATH/' /etc/snort/snort.conf
 	
 	echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} /var/log/snort and /etc/snort created and configurated.\n\n"
-	sudo /usr/local/bin/snort -V
+	 /usr/local/bin/snort -V
 	echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}SNORT${NOCOLOR} is successfully installed and configurated!"
 
 
