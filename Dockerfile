@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM kalilinux/kali-linux-docker:latest
 RUN apt-get update && apt-get install -y git curl wget
 RUN git clone https://github.com/Aleksii/IDS-automate-deploy.git /home
 RUN bash -x /home/snort.sh
