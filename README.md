@@ -4,7 +4,7 @@ Snort + Barnyard2 + Pulledpork + Snorby
 Now make.
 
 
-Deploy and configeure Snort with PING rule 
+Deploy and configure Snort with PING rule 
 
 
 #Dowload script
