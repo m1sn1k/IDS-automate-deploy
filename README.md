@@ -1,4 +1,5 @@
-# IDS-automate-deploy
+# Snort Docker
+
 Snort + Barnyard2 + Pulledpork + Snorby
 
 Now make.
