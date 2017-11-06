@@ -6,14 +6,23 @@ Now make.
 
 Deploy and configeure Snort with PING rule 
 
+
 #Dowload script
+
 git clone https://github.com/Aleksii/IDS-automate-deploy.git
+
 cd IDS-automate-deploy
+
 #Create image
+
 docker build -t snort .
+
 #Run image and connect
+
 docker run -it --rm --net=host snort /bin/bash
+
 #Run snort IDS
+
 snort -A console -q -u snort -g snort -c /etc/snort/snort.conf -i eth0
 
 And try ping it and see rezult:
