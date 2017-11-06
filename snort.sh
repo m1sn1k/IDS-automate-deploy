@@ -39,11 +39,11 @@ echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Installing dependencies.\n\n"
 	echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}$SNORT${NOCOLOR} installed successfully.\n\n"
 	cd ..
 	
-	 ldconfig
-	 ln -s /usr/local/bin/snort /usr/sbin/snort
+	ldconfig
+	ln -s /usr/local/bin/snort /usr/sbin/snort
 
 	#Adding SNORT user and group for running SNORT
-	echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Adding user and group ${BOLD}SNORT${NOCOLOR}.\n\n"
+	 echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Adding user and group ${BOLD}SNORT${NOCOLOR}.\n\n"
 	 groupadd snort
 	 useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
 	 mkdir /etc/snort > /dev/null 2>&1
@@ -60,13 +60,13 @@ echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} Installing dependencies.\n\n"
 	 chown -R snort:snort /usr/local/lib/snort_dynamicrules > /dev/null 2>&1
 	
 	 cp ~/snort_src/snort/etc/*.conf* /etc/snort > /dev/null 2>&1
-	sdo cp ~/snort_src/snort/etc/*.map /etc/snort > /dev/null 2>&1
+	 cp ~/snort_src/snort/etc/*.map /etc/snort > /dev/null 2>&1
 	
 	 sed -i 's/include \$RULE\_PATH/#include \$RULE\_PATH/' /etc/snort/snort.conf
 	
-	echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} /var/log/snort and /etc/snort created and configurated.\n\n"
+	 echo -ne "\n\t${CYAN}[i] INFO:${NOCOLOR} /var/log/snort and /etc/snort created and configurated.\n\n"
 	 /usr/local/bin/snort -V
-	echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}SNORT${NOCOLOR} is successfully installed and configurated!"
+	 echo -ne "\n\t${GREEN}[+] INFO:${NOCOLOR} ${BOLD}SNORT${NOCOLOR} is successfully installed and configurated!"
 
 
 
